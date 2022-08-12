@@ -24,25 +24,25 @@ inputs.forEach((input) => {
         if(input.value === "" && input === $inputEmail) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorEmail.innerText = "Ingresa tu e-mail";
+            $errorEmail.innerHTML = "Ingresa tu e-mail";
             emailValid = false;
         }
         if(!(input.value === "") && input === $inputEmail && !inputEmailValid(input.value)) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorEmail.innerText = "Ingresa tu e-mail - Ejemplo: hola@gmail.com";
+            $errorEmail.innerHTML = "Ingresa tu e-mail - Ejemplo: hola@gmail.com";
             emailValid = false;
         }
         if(input.value === "" && input === $inputContr) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorContr.innerText = "Ingresa tu contraseña";
+            $errorContr.innerHTML = "Ingresa tu contraseña";
             contrValid = false;
         }
         if(!(input.value === "") && input === $inputContr && !(input.value.length >= 8)) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorContr.innerText = "Ingresa tu contraseña - Debe tener mas de 8 caracteres";
+            $errorContr.innerHTML = "Ingresa tu contraseña - Debe tener mas de 8 caracteres";
             contrValid = false;
         }
         if(input.value && input === $inputEmail && inputEmailValid(input.value)) {
@@ -62,25 +62,25 @@ inputs.forEach((input) => {
         if(input.value === "" && input === $inputEmail) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorEmail.innerText = "Ingresa tu e-mail";
+            $errorEmail.innerHTML = "Ingresa tu e-mail";
             emailValid = false;
         }
         if(!(input.value === "") && input === $inputEmail && !inputEmailValid(input.value)) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorEmail.innerText = "Ingresa tu e-mail - Ejemplo: hola@gmail.com";
+            $errorEmail.innerHTML = "Ingresa tu e-mail - Ejemplo: hola@gmail.com";
             emailValid = false;
         }
         if(input.value === "" && input === $inputContr) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorContr.innerText = "Ingresa tu contraseña";
+            $errorContr.innerHTML = "Ingresa tu contraseña";
             contrValid = false;
         }
         if(!(input.value === "") && input === $inputContr && !(input.value.length >= 8)) {
             input.classList.remove("is-valid");
             input.classList.add("is-invalid");
-            $errorContr.innerText = "Ingresa tu contraseña - Debe tener mas de 8 caracteres";
+            $errorContr.innerHTML = "Ingresa tu contraseña - Debe tener mas de 8 caracteres";
             contrValid = false;
         }
         if(input.value && input === $inputEmail && inputEmailValid(input.value)) {
@@ -119,6 +119,25 @@ $inicioSesion.addEventListener("click", () => {
         sessionStorage.setItem("contraseña", $inputContr.value);
 
         location.href = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/index.html";
+    }
+
+    
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        document.getElementById("name").innerHTML = profile.getName();
+        document.getElementById("email").profile.getEmail();
+        document.getElementById("image").attr('src', profile.getImageUrl());
+        document.getElementById("dataGoo").style.display = "block";
+        document.getElementById("botonGoo").style.display = "none";
+    }
+    
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            alert("You have been signed out successfully");
+            document.getElementById("dataGoo").style.display = "none";
+            document.getElementById("botonGoo").style.display = "block";
+        });
     }
 
 })
