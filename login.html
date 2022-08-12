@@ -4,6 +4,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="900400129905-2a6toudhj9n9dga2abdnh0n6ua2m0h4h.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
   
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -13,14 +15,38 @@
     body {
       background-color: rgb(248, 249, 250);
     }
-  </style>
+    </style>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container text-center mx-auto">
+
+      
+      <div class="col-4 mx-auto">
+        <img class="img-fluid" src="./img/login.png" alt="">
+        <h3 class="mb-3 fw-bold">Inicio de sesión</h3>
+      </div>
+
+      <div class="form-outline mb-2 col-4 mx-auto">
+        <label class="form-label" for="inputEmail">Email</label>
+        <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email"/>
+        <p id="errorEmail" class="text-danger mt-2"></p>
+      </div>
+
+      <div class="form-outline mb-4 col-4 mx-auto">
+        <label class="form-label" for="inputPassword">Contraseña</label>
+        <input type="password" id="inputContraseña" class="form-control form-control-lg" placeholder="Contraseña"/>
+        <p id="errorContraseña" class="text-danger mt-2"></p>
+      </div>
+
+      <div class="d-flex flex-column">
+        <button id="inicioSesion" class="btn btn-primary btn-lg btn-block col-2 mx-auto mb-4">Ingresar</button>
+        <div class="g-signin2 mx-auto" data-onsuccess="onSignIn"></div>
+      </div>
+
+
       </div>
     </div>
   </main>
