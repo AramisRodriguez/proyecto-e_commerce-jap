@@ -121,23 +121,23 @@ $inicioSesion.addEventListener("click", () => {
         location.href = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/index.html";
     }
 
-    
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        document.getElementById("name").innerHTML = profile.getName();
-        document.getElementById("email").profile.getEmail();
-        document.getElementById("image").attr('src', profile.getImageUrl());
-        document.getElementById("dataGoo").style.display = "block";
-        document.getElementById("botonGoo").style.display = "none";
-    }
-    
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            alert("You have been signed out successfully");
-            document.getElementById("dataGoo").style.display = "none";
-            document.getElementById("botonGoo").style.display = "block";
-        });
-    }
-
 })
+
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    document.getElementById("name").innerHTML = profile.getName();
+    document.getElementById("email").innerHTML = profile.getEmail();
+    document.getElementById("image").setAttribute('src', profile.getImageUrl());
+    document.getElementById("dataGoo").style.display = "block";
+    document.getElementById("botonGoo").style.display = "none";
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        alert("You have been signed out successfully");
+        document.getElementById("dataGoo").style.display = "none";
+        document.getElementById("botonGoo").style.display = "block";
+    });
+}
