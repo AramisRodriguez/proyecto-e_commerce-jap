@@ -126,18 +126,15 @@ $inicioSesion.addEventListener("click", () => {
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    document.getElementById("name").innerHTML = profile.getName();
-    document.getElementById("email").innerHTML = profile.getEmail();
-    document.getElementById("image").setAttribute('src', profile.getImageUrl());
-    document.getElementById("dataGoo").style.display = "block";
-    document.getElementById("botonGoo").style.display = "none";
-}
+    console.log('ID: ' + profile.getId());
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+  }
 
-function signOut() {
+  function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        alert("You have been signed out successfully");
-        document.getElementById("dataGoo").style.display = "none";
-        document.getElementById("botonGoo").style.display = "block";
+      console.log('User signed out.');
     });
-}
+  }
