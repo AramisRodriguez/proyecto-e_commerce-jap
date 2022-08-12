@@ -118,7 +118,7 @@ $inicioSesion.addEventListener("click", () => {
         sessionStorage.setItem("usuario", $inputEmail.value);
         sessionStorage.setItem("contraseña", $inputContr.value);
 
-        location.href = "../index.html";
+        location.href = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/index.html";
     }
 
 })
