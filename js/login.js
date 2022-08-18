@@ -1,11 +1,11 @@
 
-const $inputEmail = document.getElementById("inputEmail");
-const $inputContr = document.getElementById("inputContraseña");
-const $errorEmail = document.getElementById("errorEmail");
-const $errorContr = document.getElementById("errorContraseña");
-const $inicioSesion = document.getElementById("inicioSesion");
+let $inputEmail = document.getElementById("inputEmail");
+let $inputContr = document.getElementById("inputContraseña");
+let $errorEmail = document.getElementById("errorEmail");
+let $errorContr = document.getElementById("errorContraseña");
+let $inicioSesion = document.getElementById("inicioSesion");
 
-const inputEmailValid = (email) => {
+let inputEmailValid = (email) => {
    if(/[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(email)) {
     return true;
    } else {
@@ -13,7 +13,7 @@ const inputEmailValid = (email) => {
    }
 };
 
-const inputs = [$inputEmail, $inputContr]
+let inputs = [$inputEmail, $inputContr]
 
 let emailValid = false;
 let contrValid = false;
@@ -125,15 +125,16 @@ $inicioSesion.addEventListener("click", () => {
 
 
 function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
+    let profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
+    var id_token = googleUser.getAuthResponse().id_token;
   }
 
   function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
+    let auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
