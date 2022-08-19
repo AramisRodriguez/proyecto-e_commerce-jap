@@ -4,22 +4,6 @@ let $showProducts = document.getElementById("showProducts");
 let urlCars = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
 
-// async function getJSON(url) {
-//     try {
-//         let res = await fetch(url);
-//         let json = await res.json(); 
-
-//         console.log(json)
-//         if(res.ok) {
-//             return json;
-//         } else {
-//             throw error;
-//         }
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-
 function showJSON(url) {
     let json = getJSONData(urlCars)
 
