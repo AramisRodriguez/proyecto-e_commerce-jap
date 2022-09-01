@@ -146,4 +146,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             });
         }
     });
+
+    document.getElementById("usuario").innerHTML = sessionStorage.usuario;
 });

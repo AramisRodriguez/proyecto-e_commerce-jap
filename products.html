@@ -31,15 +31,63 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="./my-profile.html" id="usuario"></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main class="pb-5 container">
-    <div id="showProducts" class="container">
+    <div id="showTitleProducts">
 
     </div>
+
+    <div id="sort">
+      <div class="container">
+        <div class="row">
+          <div class="col text-end me-3">
+            <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+              <input type="radio" class="btn-check" name="options" id="sortDescPrice">
+              <label class="btn btn-light" for="sortDescPrice"><i class="fas fa-sort-amount-down mr-1">$</i></label>
+              <input type="radio" class="btn-check" name="options" id="sortAscPrice">
+              <label class="btn btn-light" for="sortAscPrice"><i class="fas fa-sort-amount-up mr-1">$</i></label>
+              <input type="radio" class="btn-check" name="options" id="sortBySolds">
+              <label class="btn btn-light" for="sortBySolds"><i class="fas fa-sort-amount-down mr-1">Rel.</i></label>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-end my-2">Precio</p>
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterMin">
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterMax">
+              </div>
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" id="rangeFilterButton">Filtrar</button>
+                  <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
+                </div>
+               </div>
+              </div>
+            </div>
+              <input class="container form-control my-3" placeholder="Buscar" id="searchInput" type="search">
+          </div>
+        <div class="row">
+          <div class="list-group" id="cat-list-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="showProducts" class="container">
+      
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">

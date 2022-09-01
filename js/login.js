@@ -13,7 +13,7 @@ let inputEmailValid = (email) => {
    }
 };
 
-let inputs = [$inputEmail, $inputContr]
+let inputs = [$inputEmail, $inputContr];
 
 let emailValid = false;
 let contrValid = false;
@@ -98,6 +98,32 @@ inputs.forEach((input) => {
     })
 });
 
+inputs.forEach((input) => {
+    input.addEventListener("keyup", (event) => {
+        if(event.code === "Enter") {
+            if(!emailValid && !contrValid) {
+                $errorEmail.innerHTML = "Ingresa tu e-mail"
+                $errorContr.innerHTML = "Ingresa tu contraseña";
+            }
+        
+            if(!emailValid) {
+                $errorEmail.innerHTML = "Ingresa tu e-mail"
+            }
+        
+            if(!contrValid) {
+                $errorContr.innerHTML = "Ingresa tu contraseña";
+            }
+        
+            if(emailValid && contrValid) {
+                sessionStorage.setItem("usuario", $inputEmail.value);
+                sessionStorage.setItem("contraseña", $inputContr.value);
+        
+                location.href = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/index.html";
+                // location.href = "../index.html";
+            }
+        }
+    })
+})
 
 $inicioSesion.addEventListener("click", () => {
 
@@ -132,7 +158,7 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     var id_token = googleUser.getAuthResponse().id_token;
-    alert('Name: ' + profile.getName())
+    alert('Name: ' + profile.getName());
   }
 
   function signOut() {

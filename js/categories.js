@@ -140,4 +140,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    
+
+
+    document.getElementById("usuario").innerHTML = sessionStorage.usuario;
 });
