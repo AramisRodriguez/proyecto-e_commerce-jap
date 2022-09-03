@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
     
     if(!(sessionStorage.usuario) && !(sessionStorage.contraseña)) {
-        location.href = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/login.html";
-        // location.href = "../login.html";
+        // location.href = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/login.html";
+        location.href = "../login.html";
     }
-
-
-    document.getElementById("usuario").innerHTML = sessionStorage.usuario;
 
 
 
