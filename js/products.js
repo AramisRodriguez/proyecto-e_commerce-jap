@@ -25,7 +25,7 @@ let urlProducts = PRODUCTS_URL + localStorage.catID + EXT_TYPE;
 
 function setProductID(id) {
     localStorage.setItem("productID", id);
-    window.location = "../product-info.html";
+    window.location = "product-info.html";
 }
 
 
