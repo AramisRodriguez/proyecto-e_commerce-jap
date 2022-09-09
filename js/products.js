@@ -23,9 +23,10 @@ let $showProducts = document.getElementById("showProducts");
 let urlProducts = PRODUCTS_URL + localStorage.catID + EXT_TYPE;
 
 
-
-let dataJSONProducts = getJSONData(urlProducts).then(json => dataProducts = json.data);
-
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "../product-info.html";
+}
 
 
 function showDataProducts(dataTitle, dataPro) {
@@ -39,22 +40,22 @@ function showDataProducts(dataTitle, dataPro) {
 
     for(let i = 0; i < dataPro.length; i++) {
         $showProducts.innerHTML += `
-         <div class="list-group-item list-group-item-action">
-             <div class="row">
-                 <div class="col-3">
-                     <img src="` + dataPro[i].image + `" alt="product image" class="img-thumbnail">
-                 </div>
-                 <div class="col">
-                     <div class="d-flex w-100 justify-content-between">
-                         <div class="mb-1">
-                         <h4> ${dataPro[i].name} - $${dataPro[i].cost} </h4>
-                         <p> ${dataPro[i].description} </p>
-                         </div>
-                         <small class="text-muted"> ${dataPro[i].soldCount} vendidos</small>
-                     </div>
-                 </div>
-             </div>
-         </div>
+        <div onclick="setProductID(${dataPro[i].id})" class="list-group-item list-group-item-action">
+            <div class="row">
+                <div class="col-3">
+                    <img src="` + dataPro[i].image + `" alt="product image" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="mb-1">
+                        <h4> ${dataPro[i].name} - $${dataPro[i].cost} </h4>
+                        <p> ${dataPro[i].description} </p>
+                        </div>
+                        <small class="text-muted"> ${dataPro[i].soldCount} vendidos</small>
+                    </div>
+                </div>
+            </div>
+        </div>
         `;
     }
 }
@@ -125,10 +126,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (resultObj.status === "ok"){
             dataProducts = resultObj.data;
             showDataProducts(dataProducts, dataProducts.products);
-            // log(dataProducts)
+            log(dataProducts);
         }
     });
-    // log(dataProducts);
+
 
 
     document.getElementById("usuario").innerHTML = sessionStorage.usuario;
