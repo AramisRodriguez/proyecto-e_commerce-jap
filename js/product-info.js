@@ -8,6 +8,11 @@ let dataComments = [];
 let urlProduct = PRODUCT_INFO_URL + localStorage.productID + EXT_TYPE;
 let urlComments = PRODUCT_INFO_COMMENTS_URL + localStorage.productID + EXT_TYPE;
 
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "https://aramisrodriguez.github.io/proyecto-e_commerce-jap/product-info.html";
+    // window.location = "product-info.html";
+}
 
 function showDataProduct(dataPro){
 
@@ -25,7 +30,8 @@ function showDataProduct(dataPro){
         ${dataPro.soldCount}</p>
         <p><span class="fw-bold" >Imágenes ilustrativas</span></br>
         <div id="imageProduct" class="d-flex gap-3" >
-        </div></p>
+        </div>
+        </p>
         <h4 class="h4 mt-5 mb-3 fw-bold " >Comentarios</h4>
     </div>
     `;
@@ -83,8 +89,43 @@ function showInputComments(){
             <span id="star5" class="fa fa-star" style="cursor:pointer" ></span>
             <button id="showCommentBtn" class="btn btn-primary ms-4" >Enviar</button>
         </div>
-    </div>
+        <hr class="m-5"/>
+        <div class="" id="relatedProducts">
+            <h4 class="h4 mb-4 fw-bold" >Productos relacionados</h4>
+        </div>
+        </div>
     `
+
+}
+
+function carousel(id, data){
+
+    id.innerHTML += `
+    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="` + data.images[0] + `" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="` + data.images[1] + `" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="` + data.images[2] + `" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="` + data.images[3] + `" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+    `   
 
 }
 
@@ -95,14 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (resultObj.status === "ok"){
             dataProduct = resultObj.data;
             showDataProduct(dataProduct);
+            log(dataProduct)
 
             let $imageProduct = document.getElementById("imageProduct");
 
-            for( let i = 0; i < dataProduct.images.length; i++){
+            carousel($imageProduct, dataProduct);
 
-                $imageProduct.innerHTML += `<img src="` + dataProduct.images[i] + `" alt="product image" class="col-2 img-thumbnail">`
-                
-            }
         }
     });
 
@@ -111,6 +150,29 @@ document.addEventListener("DOMContentLoaded", () => {
             dataComments = resultObj.data;
             showDataComments(dataComments);
             showInputComments();
+
+            let $relatedProducts = document.getElementById("relatedProducts");
+
+
+            for( let i = 0; i < dataProduct.relatedProducts.length; i++){
+
+                $relatedProducts.innerHTML += `
+                <div onclick="setProductID(${dataProduct.relatedProducts[i].id})" class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + dataProduct.relatedProducts[i].image + `" alt="product image" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="mb-1">
+                            <h4> ${dataProduct.relatedProducts[i].name}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                `
+                
+            }
         }
 
         let $star1 = document.getElementById("star1");
@@ -160,8 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let dateAndTime = new Date();
         let year = dateAndTime.getFullYear();
-        let month = dateAndTime.getMonth();
-        let day = dateAndTime.getDay();
+        let month = dateAndTime.getMonth() + 1;
+        let day = dateAndTime.getDate();
         let hours = dateAndTime.getHours();
         let minutes = dateAndTime.getMinutes();
         let seconds = dateAndTime.getSeconds();

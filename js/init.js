@@ -43,6 +43,13 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById("usuario").innerHTML = sessionStorage.usuario;
+  document.getElementById("user").innerHTML = sessionStorage.usuario;
+
+  let closeSession = document.getElementById("closeSession");
+
+  closeSession.addEventListener("click", () => {
+    sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem("contraseña");
+  })
 
 })

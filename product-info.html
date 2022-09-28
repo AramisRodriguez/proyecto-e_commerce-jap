@@ -31,7 +31,15 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./my-profile.html" id="usuario"></a>
+            <div class="dropdown">
+              <button  class="btn btn-dark dropdown-toggle" type="button" id="user" data-bs-toggle="dropdown" aria-expanded="false">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="./cart.html">Mi carrito</a></li>
+                <li><a class="dropdown-item" href="./my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="./login.html" id="closeSession">Cerrar sesión</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -39,7 +47,7 @@
   </nav>
   <main>
     <div id="containerProduct">
-
+      
     </div>
   </main>
   <footer class="text-muted">
