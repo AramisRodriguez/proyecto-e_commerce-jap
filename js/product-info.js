@@ -4,6 +4,7 @@ let $showProduct = document.getElementById("containerProduct");
 
 let dataProduct = [];
 let dataComments = [];
+let buyProductList = [];
 
 let urlProduct = PRODUCT_INFO_URL + localStorage.productID + EXT_TYPE;
 let urlComments = PRODUCT_INFO_COMMENTS_URL + localStorage.productID + EXT_TYPE;
@@ -14,11 +15,42 @@ function setProductID(id) {
     // window.location = "product-info.html";
 }
 
+
+
+function buyProduct(){
+  
+    if(localStorage.getItem("buyProductList")){
+        buyProductList = JSON.parse(localStorage.getItem("buyProductList"));
+        buyProductList.push({image: dataProduct.images[0], name: dataProduct.name, currency: dataProduct.currency, unitCost: dataProduct.cost, id: dataProduct.id});
+
+
+        let obj = {};
+        buyProductList = buyProductList.filter(function(current) {
+        let exists = !obj[current.id];
+        obj[current.id] = true;
+        return exists;
+        });
+
+
+        localStorage.setItem("buyProductList", JSON.stringify(buyProductList));
+    }
+
+    if(localStorage.getItem("buyProductList") === null){
+        buyProductList.push({image: dataProduct.images[0], name: dataProduct.name, currency: dataProduct.currency, unitCost: dataProduct.cost, id: dataProduct.id});
+        localStorage.setItem("buyProductList", JSON.stringify(buyProductList));
+    }  
+
+}
+
+
 function showDataProduct(dataPro){
 
     $showProduct.innerHTML += `
-    <div class="container">
-        <h2 class="h2 my-4" >${dataPro.name}</h2>
+    <div class="container mt-5">
+        <div class="container d-flex justify-content-between align-items-center" >
+            <h2 class="h2 my-4" >${dataPro.name}</h2>
+            <div class="mx-5" ><button onclick ="buyProduct()" type="button" class="btn btn-success" id="comprar">Comprar</button></div>
+            </div>
         <hr/>
         <p><span class="fw-bold" >Precio</span></br>
         ${dataPro.currency} ${dataPro.cost} </p>
