@@ -1,6 +1,7 @@
 let log = (x) => console.log(x);
 
 let $showProduct = document.getElementById("containerProduct");
+let $showComments = document.getElementById("containerComments");
 
 let dataProduct = [];
 let dataComments = [];
@@ -72,13 +73,13 @@ function showDataProduct(dataPro){
 
 function showDataComments(dataComm){
 
-    $showProduct.innerHTML += `
+    $showComments.innerHTML += `
     <div id="showNewComment" class="d-flex flex-column-reverse" ></div>
     `
     
     for(let i = 0; i < dataComm.length; i++) {
 
-        $showProduct.innerHTML += `
+        $showComments.innerHTML += `
         <div class="container border p-3">
             <div class="">
                 <div class="">
@@ -105,7 +106,7 @@ function showDataComments(dataComm){
 
 function showInputComments(){
 
-    $showProduct.innerHTML += `
+    $showComments.innerHTML += `
     <div class="container">
         <h4 class="h4 mt-5 fw-bold" >Comentar</h4>
         <div class="" >
